@@ -39,7 +39,7 @@ function RFIDtag () {
     for (let value of wake) {
         serial.writeString("" + (value))
     }
-    receive_ACK = serial.readBuffer(15)
+    receive_ACK = serial.readString()
     for (let value of receive_ACK) {
         serial.writeString("" + (value))
     }
@@ -54,8 +54,8 @@ function RFIDinit () {
     for (let value of wake) {
         serial.writeString("" + (value))
     }
-    serial.setRxBufferSize(15)
-    receive_ACK = serial.readBuffer(15)
+    serial.setRxBufferSize(0)
+    receive_ACK = serial.readString()
     for (let value of receive_ACK) {
         serial.writeString("" + (value))
     }
@@ -79,7 +79,7 @@ function RFIDfirmware () {
     for (let value of firmware) {
         serial.writeString("" + (value))
     }
-    receive_ACK = serial.readBuffer(15)
+    receive_ACK = serial.readString()
     for (let value of receive_ACK) {
         serial.writeString("" + (value))
     }
@@ -113,7 +113,7 @@ function TextLine () {
     }
 }
 let RFID = ""
-let receive_ACK: Buffer = null
+let receive_ACK = ""
 let firmware: number[] = []
 let wake: number[] = []
 // HEX Codes to Wake Up 0x55, 0x55, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0x03, 0xfd, 0xd4, 0x14, 0x01, 0x17, 0x00
