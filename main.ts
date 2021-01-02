@@ -128,7 +128,6 @@ OLED12864_I2C.init(60)
 OLED12864_I2C.on()
 Wifi()
 TextLine()
-RFIDinit()
 basic.forever(function () {
     basic.showNumber(3)
     basic.pause(5000)
